@@ -1,0 +1,1 @@
+include ':app', ':core', ':easyview', ':mvp', ':adapter', ':form'
