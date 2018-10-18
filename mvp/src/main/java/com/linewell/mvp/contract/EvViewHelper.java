@@ -11,9 +11,9 @@ import com.linewell.easyview.EasyView;
 
 public class EvViewHelper<T> implements Callback<T> {
 
-    private EvContract.V.Config mConfig;
-    private EvContract.V mEvView;
-    private EasyView mEasyView;
+    protected EvContract.V.Config mConfig;
+    protected EvContract.V mEvView;
+    protected EasyView mEasyView;
 
     public EvViewHelper(@NonNull EvContract.V evView) {
         mEvView = evView;

@@ -1,1 +1,1 @@
-include ':app', ':core', ':easyview', ':mvp', ':adapter', ':form'
+include ':app', ':core', ':easyview', ':mvp', ':adapter'

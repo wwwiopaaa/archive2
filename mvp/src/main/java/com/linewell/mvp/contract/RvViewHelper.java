@@ -14,11 +14,11 @@ import com.linewell.easyview.EasyRecyclerView;
 import com.linewell.easyview.LoadMoreAdapter;
 
 public class RvViewHelper {
-    private RvContract.V mRvView;
-    private RvContract.V.Config mConfig;
-    private EasyRecyclerView mEasyRecyclerView;
-    private Callback mLoadMoreCallback;
-    private Callback mRefreshCallback;
+    protected RvContract.V mRvView;
+    protected RvContract.V.Config mConfig;
+    protected EasyRecyclerView mEasyRecyclerView;
+    protected Callback mLoadMoreCallback;
+    protected Callback mRefreshCallback;
 
     public RvViewHelper(@NonNull RvContract.V rvView) {
         mRvView = rvView;
