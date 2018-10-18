@@ -10,8 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import com.linewell.archive.R;
 import com.linewell.archive.bean.People;
 import com.linewell.mvp.RvActionBarActivity;
-import com.linewell.support.adapter.CommonAdapter;
-import com.linewell.support.adapter.ViewHolder;
+import com.linewell.support.recycler.CommonAdapter;
+import com.linewell.support.recycler.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;

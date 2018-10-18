@@ -1,9 +1,9 @@
-package com.linewell.support.adapter.section;
+package com.linewell.support.recycler.section;
 
 import android.support.v4.util.Pair;
 
-import com.linewell.support.adapter.ItemViewDelegate;
-import com.linewell.support.adapter.ViewHolder;
+import com.linewell.support.recycler.ItemViewDelegate;
+import com.linewell.support.recycler.ViewHolder;
 
 public abstract class SectionHFViewDelegate<T> implements ItemViewDelegate<T> {
 

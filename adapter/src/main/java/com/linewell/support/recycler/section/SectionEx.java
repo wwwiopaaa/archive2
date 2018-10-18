@@ -1,4 +1,4 @@
-package com.linewell.support.adapter.section;
+package com.linewell.support.recycler.section;
 
 import android.support.annotation.NonNull;
 import android.support.v4.util.Pair;

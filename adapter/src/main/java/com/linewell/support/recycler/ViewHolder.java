@@ -1,4 +1,4 @@
-package com.linewell.support.adapter;
+package com.linewell.support.recycler;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.linewell.support.adapter.WrapperAdapter;
-import com.linewell.support.adapter.section.WrapperUtils;
+import com.linewell.support.recycler.WrapperAdapter;
+import com.linewell.support.recycler.section.WrapperUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

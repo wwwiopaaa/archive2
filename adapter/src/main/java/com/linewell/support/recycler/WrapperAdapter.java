@@ -1,4 +1,4 @@
-package com.linewell.support.adapter;
+package com.linewell.support.recycler;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

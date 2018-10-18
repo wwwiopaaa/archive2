@@ -1,4 +1,4 @@
-package com.linewell.support.adapter.section;
+package com.linewell.support.recycler.section;
 
 /**
  * @describe </br>

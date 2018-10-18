@@ -1,10 +1,10 @@
-package com.linewell.support.adapter.section;
+package com.linewell.support.recycler.section;
 
 import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.linewell.support.adapter.ItemClickSupport;
+import com.linewell.support.recycler.ItemClickSupport;
 
 /**
  * <pre>

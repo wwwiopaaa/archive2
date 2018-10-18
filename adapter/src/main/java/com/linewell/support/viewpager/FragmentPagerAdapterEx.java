@@ -1,12 +1,15 @@
-package com.linewell.core.adapter;
+package com.linewell.support.viewpager;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <pre>
@@ -21,7 +24,8 @@ public abstract class FragmentPagerAdapterEx extends FragmentPagerAdapter {
 
     private Fragment mCurrentFragment;
     private FragmentManager mFragmentManager;
-    private SparseArrayCompat mTagCache = new SparseArrayCompat();
+    private SparseArrayCompat<String> mTagCache = new SparseArrayCompat();
+    private List<String> mFlushTags = new ArrayList<>();
 
     public FragmentPagerAdapterEx(FragmentManager fm) {
         super(fm);
@@ -43,11 +47,11 @@ public abstract class FragmentPagerAdapterEx extends FragmentPagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        super.destroyItem(container, position, object);
         mTagCache.remove(position);
+        super.destroyItem(container, position, object);
     }
 
-    public Fragment getCurrentFragment() {
+    public Fragment getCurrent() {
         return mCurrentFragment;
     }
 
@@ -59,18 +63,28 @@ public abstract class FragmentPagerAdapterEx extends FragmentPagerAdapter {
         return null;
     }
 
-//    public void flush() {
-//        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-//        final int count = getCount();
-//        for (int i = 0; i < count; i++) {
-//            Fragment fragment = getFragmentForPosition(i);
-//            if (fragment != null) {
-//                fragmentTransaction.remove(fragment);
-//            }
-//        }
-//        fragmentTransaction.commit();
-////        fragmentTransaction.commitNow();
-//        mFragmentManager.executePendingTransactions();
-//        notifyDataSetChanged();
-//    }
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        final String tag = ((Fragment) object).getTag();
+        if (mFlushTags.contains(tag)) {
+            mFlushTags.remove(tag);
+            return POSITION_NONE;
+        }
+
+        if (mTagCache.isEmpty()) {
+            return POSITION_NONE;
+        }
+        return super.getItemPosition(object);
+    }
+
+    public void flush() {
+        mFlushTags.clear();
+        for(int i = 0;i < mTagCache.size(); i++) {
+            String tag = mTagCache.valueAt(i);
+            if (!mFlushTags.contains(tag)) {
+                mFlushTags.add(tag);
+            }
+        }
+        notifyDataSetChanged();
+    }
 }

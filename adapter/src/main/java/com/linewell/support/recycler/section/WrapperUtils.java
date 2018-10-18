@@ -1,4 +1,4 @@
-package com.linewell.support.adapter.section;
+package com.linewell.support.recycler.section;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;

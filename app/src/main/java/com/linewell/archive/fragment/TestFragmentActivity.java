@@ -11,7 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.linewell.archive.R;
-import com.linewell.core.adapter.FragmentPagerAdapterEx;
+import com.linewell.support.viewpager.FragmentPagerAdapterEx;
 import com.linewell.core.common.ContentLayout;
 import com.linewell.mvp.ActionBarActivity;
 

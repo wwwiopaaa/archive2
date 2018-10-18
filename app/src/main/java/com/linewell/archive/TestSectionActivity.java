@@ -13,14 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.linewell.core.common.BaseActivity;
-import com.linewell.support.adapter.ItemClickSupport;
-import com.linewell.support.adapter.ViewHolder;
-import com.linewell.support.adapter.section.OnSectionClickListener;
-import com.linewell.support.adapter.section.Section;
-import com.linewell.support.adapter.section.SectionAdapter;
-import com.linewell.support.adapter.section.SectionEx;
-import com.linewell.support.adapter.section.SectionHFViewDelegate;
-import com.linewell.support.adapter.section.SectionItemViewDelegate;
+import com.linewell.support.recycler.ItemClickSupport;
+import com.linewell.support.recycler.ViewHolder;
+import com.linewell.support.recycler.section.OnSectionClickListener;
+import com.linewell.support.recycler.section.Section;
+import com.linewell.support.recycler.section.SectionAdapter;
+import com.linewell.support.recycler.section.SectionEx;
+import com.linewell.support.recycler.section.SectionHFViewDelegate;
+import com.linewell.support.recycler.section.SectionItemViewDelegate;
 
 import java.util.Random;
 

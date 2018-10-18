@@ -1,4 +1,4 @@
-package com.linewell.support.adapter;
+package com.linewell.support.recycler;
 
 
 import android.content.Context;

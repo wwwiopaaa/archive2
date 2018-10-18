@@ -1,4 +1,4 @@
-package com.linewell.support.adapter.section;
+package com.linewell.support.recycler.section;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,10 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.linewell.support.adapter.ItemViewDelegate;
-import com.linewell.support.adapter.ItemViewDelegateManager;
-import com.linewell.support.adapter.MultiItemTypeAdapter;
-import com.linewell.support.adapter.ViewHolder;
+import com.linewell.support.recycler.ItemViewDelegate;
+import com.linewell.support.recycler.ItemViewDelegateManager;
+import com.linewell.support.recycler.MultiItemTypeAdapter;
+import com.linewell.support.recycler.ViewHolder;
 
 /**
  * @describe </br>

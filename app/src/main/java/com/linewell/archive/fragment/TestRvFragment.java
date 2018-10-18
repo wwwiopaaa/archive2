@@ -10,8 +10,8 @@ import com.linewell.archive.rv.TestRvContract;
 import com.linewell.archive.rv.TestRvModel;
 import com.linewell.archive.rv.TestRvPresenter;
 import com.linewell.mvp.RvFragment;
-import com.linewell.support.adapter.CommonAdapter;
-import com.linewell.support.adapter.ViewHolder;
+import com.linewell.support.recycler.CommonAdapter;
+import com.linewell.support.recycler.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
