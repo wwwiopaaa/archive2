@@ -27,16 +27,16 @@ public abstract class PagerAdapterEx extends PagerAdapter {
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        Object obj = super.instantiateItem(container, position);
+    public final Object instantiateItem(@NonNull ViewGroup container, int position) {
+        Object obj = onInstantiateItem(container, position);
         mObjCache.put(position, obj);
         return obj;
     }
 
     @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+    public final void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         mObjCache.remove(position);
-        super.destroyItem(container, position, object);
+        onDestroyItem(container, position, object);
     }
 
     @Override
@@ -56,7 +56,14 @@ public abstract class PagerAdapterEx extends PagerAdapter {
         return mCurrentObject;
     }
 
-    public void flush() {
+    public Object findObjectByPosition(int position) {
+        return mObjCache.get(position);
+    }
+
+    /**
+     * 将重新执行destroyItem 和instantiateItem
+     */
+    public final void flush() {
         mFlushViews.clear();
         for(int i = 0; i < mObjCache.size(); i++) {
             Object obj = mObjCache.valueAt(i);
@@ -66,4 +73,10 @@ public abstract class PagerAdapterEx extends PagerAdapter {
         }
         notifyDataSetChanged();
     }
+
+    @NonNull
+    public abstract Object onInstantiateItem(@NonNull ViewGroup container, int position);
+
+    public abstract void onDestroyItem(@NonNull ViewGroup container, int position, @NonNull Object object);
+
 }

@@ -3,14 +3,12 @@ package com.linewell.support.viewpager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.util.SparseArrayCompat;
-import android.text.TextUtils;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * <pre>
@@ -21,16 +19,14 @@ import java.util.Random;
  *     version: 1.0
  * </pre>
  */
-public abstract class FragmentPagerAdapterEx extends FragmentPagerAdapter {
+public abstract class FragmentStatePagerAdapterEx extends FragmentStatePagerAdapter {
 
     private Fragment mCurrentFragment;
-    private FragmentManager mFragmentManager;
-    private SparseArrayCompat<String> mTagCache = new SparseArrayCompat();
-    private List<String> mFlushTags = new ArrayList<>();
+    private SparseArrayCompat<Fragment> mFragmentCache = new SparseArrayCompat();
+    private List<Fragment> mFlushFragments = new ArrayList<>();
 
-    public FragmentPagerAdapterEx(FragmentManager fm) {
+    public FragmentStatePagerAdapterEx(FragmentManager fm) {
         super(fm);
-        mFragmentManager = fm;
     }
 
     @Override
@@ -42,19 +38,14 @@ public abstract class FragmentPagerAdapterEx extends FragmentPagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         Fragment fragment = (Fragment) super.instantiateItem(container, position);
-        mTagCache.put(position, fragment.getTag());
+        mFragmentCache.put(position, fragment);
         return fragment;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        mTagCache.remove(position);
+        mFragmentCache.remove(position);
         super.destroyItem(container, position, object);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return super.getItemId(position);
     }
 
     public Fragment getCurrent() {
@@ -62,36 +53,32 @@ public abstract class FragmentPagerAdapterEx extends FragmentPagerAdapter {
     }
 
     public Fragment findFragmentByPosition(int position) {
-        String tag = (String) mTagCache.get(position);
-        if (!TextUtils.isEmpty(tag)) {
-            return mFragmentManager.findFragmentByTag(tag);
-        }
-        return null;
+        return mFragmentCache.get(position);
     }
 
     @Override
     public int getItemPosition(@NonNull Object object) {
-        final String tag = ((Fragment) object).getTag();
-        if (mFlushTags.contains(tag)) {
-            mFlushTags.remove(tag);
+        final Fragment tag = ((Fragment) object);
+        if (mFlushFragments.contains(tag)) {
+            mFlushFragments.remove(tag);
             return POSITION_NONE;
         }
 
-        if (mTagCache.isEmpty()) {
+        if (mFragmentCache.isEmpty()) {
             return POSITION_NONE;
         }
         return super.getItemPosition(object);
     }
 
     /**
-     * 已实例化的Fragment将被 先detach()再attach(). 生命周期执行:onPause -> onStop() ->onDestroyView() -> onCreateView()->onStart()->onResume()
+     * 已实例化的Fragment将会被重新创建
      */
     public final void flush() {
-        mFlushTags.clear();
-        for (int i = 0; i < mTagCache.size(); i++) {
-            String tag = mTagCache.valueAt(i);
-            if (!mFlushTags.contains(tag)) {
-                mFlushTags.add(tag);
+        mFlushFragments.clear();
+        for (int i = 0; i < mFragmentCache.size(); i++) {
+            Fragment fragment = mFragmentCache.valueAt(i);
+            if (!mFlushFragments.contains(fragment)) {
+                mFlushFragments.add(fragment);
             }
         }
 

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.linewell.archive.adapter.TestViewPagerAdapterActivity;
+import com.linewell.archive.adapter.TestSectionActivity;
 import com.linewell.archive.ev.TestEvActionBarActivity;
 import com.linewell.archive.ev.TestEvActivity;
 import com.linewell.archive.fragment.TestFragmentActivity;
@@ -37,5 +39,9 @@ public class MainActivity extends BaseActivity {
 
     public void testFragment(View view) {
         TestFragmentActivity.start(this);
+    }
+
+    public void testViewpagerAdapter(View view) {
+        TestViewPagerAdapterActivity.start(this);
     }
 }

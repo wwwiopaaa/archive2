@@ -2,6 +2,7 @@ package com.linewell.archive.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.TextView;
@@ -21,43 +22,24 @@ import com.linewell.mvp.MvpFragment;
  */
 
 @ContentLayout(R.layout.fragment_item)
-public class TestMvpFragment extends MvpFragment<TestFragmentContract.V,TestFragmentContract.P>
-implements TestFragmentContract.V{
+public class TestMvpFragment extends MvpFragment<TestFragmentContract.V, TestFragmentContract.P>
+        implements TestFragmentContract.V {
+
+    public static final String ARG_TITLE = "TITLE";
+
+    public static TestMvpFragment newInstance(String title) {
+
+        Bundle args = new Bundle();
+        args.putString(ARG_TITLE, title);
+        TestMvpFragment fragment = new TestMvpFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     protected TestFragmentContract.P createPresenter(Bundle savedInstanceState) {
         return new TestFragmentPresenter(new TestFragmentContract.M() {
-        }){
-            @Override
-            public void doOnCreate() {
-                Log.e("lifecycle", "doOnCreate");
-            }
-
-            @Override
-            public void doOnStart() {
-                Log.e("lifecycle", "doOnStart");
-            }
-
-            @Override
-            public void doOnResume() {
-                Log.e("lifecycle", "doOnResume");
-            }
-
-            @Override
-            public void doOnPause() {
-                Log.e("lifecycle", "doOnPause");
-            }
-
-            @Override
-            public void doOnStop() {
-                Log.e("lifecycle", "doOnStop");
-            }
-
-            @Override
-            public void doOnDestroy() {
-                Log.e("lifecycle", "doOnDestroy");
-            }
-        };
+        });
     }
 
     @Override
@@ -72,11 +54,24 @@ implements TestFragmentContract.V{
         Log.e("lifecycle", "onCreate");
     }
 
+    TextView title;
+
     @Override
     public void onCreateView(@Nullable Bundle savedInstanceState) {
         super.onCreateView(savedInstanceState);
-        ((TextView) findViewById(R.id.title)).setText("TestMvpFragment");
+        title = (TextView) findViewById(R.id.title);
+        if (savedInstanceState != null && savedInstanceState.containsKey(ARG_TITLE)) {
+            title.setText(savedInstanceState.getString(ARG_TITLE));
+        } else {
+            title.setText(getArguments().getString(ARG_TITLE,"TestMvpFragment"));
+        }
         Log.e("lifecycle", "onCreateView");
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+//        outState.putString(ARG_TITLE, title.getText().toString());
+        super.onSaveInstanceState(outState);
     }
 
     @Override

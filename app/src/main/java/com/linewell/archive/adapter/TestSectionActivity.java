@@ -1,4 +1,4 @@
-package com.linewell.archive;
+package com.linewell.archive.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.linewell.archive.R;
 import com.linewell.core.common.BaseActivity;
 import com.linewell.support.recycler.ItemClickSupport;
 import com.linewell.support.recycler.ViewHolder;

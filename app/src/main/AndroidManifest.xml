@@ -18,11 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestSectionActivity" />
+        <activity android:name=".adapter.TestSectionActivity" />
         <activity android:name=".ev.TestEvActivity" />
         <activity android:name=".ev.TestEvActionBarActivity" />
         <activity android:name=".rv.TestRvActionBarActivity" />
         <activity android:name=".fragment.TestFragmentActivity" />
+        <activity android:name=".adapter.TestViewPagerAdapterActivity" />
     </application>
 
 </manifest>
