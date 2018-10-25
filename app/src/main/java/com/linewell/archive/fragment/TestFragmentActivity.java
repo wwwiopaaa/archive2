@@ -122,9 +122,9 @@ public class TestFragmentActivity extends ActionBarActivity<TestFragmentContract
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new TestMvpFragment();
+                    return TestMvpFragment.newInstance((String) getPageTitle(position));
                 case 1:
-                    return new TestMvpLazyFragment();
+                    return TestMvpLazyFragment.newInstance((String) getPageTitle(position));
                 case 2:
                     return TestEvFragment.newInstance();
                 case 3:
