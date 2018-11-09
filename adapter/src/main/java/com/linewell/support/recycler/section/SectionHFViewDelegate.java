@@ -7,7 +7,11 @@ import com.linewell.support.recycler.ViewHolder;
 
 public abstract class SectionHFViewDelegate<T> implements ItemViewDelegate<T> {
 
-    /*package*/ SectionAdapter mSectionAdapter;
+    private SectionAdapter mSectionAdapter;
+
+    public SectionHFViewDelegate(SectionAdapter sectionAdapter) {
+        this.mSectionAdapter = sectionAdapter;
+    }
 
     @Override
     public final boolean isForViewType(T item, int position) {

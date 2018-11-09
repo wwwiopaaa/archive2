@@ -46,26 +46,26 @@ public class SectionAdapter<T> extends MultiItemTypeAdapter<T> implements Wrappe
     }
 
     public MultiItemTypeAdapter addItemViewDelegate(SectionItemViewDelegate itemViewDelegate) {
-        itemViewDelegate.mSectionAdapter = this;
+        //itemViewDelegate.mSectionAdapter = this;
         return super.addItemViewDelegate(itemViewDelegate);
     }
 
     public MultiItemTypeAdapter addItemViewDelegate(int viewType, SectionItemViewDelegate itemViewDelegate) {
-        itemViewDelegate.mSectionAdapter = this;
+        //itemViewDelegate.mSectionAdapter = this;
         return super.addItemViewDelegate(viewType, itemViewDelegate);
     }
 
     public MultiItemTypeAdapter addHeaderViewDelegate(SectionHFViewDelegate itemViewDelegate) {
         final int type = HEADER_TYPE_OFFSET + mHeaderViewDelegateManager.getItemViewDelegateCount();
         mHeaderViewDelegateManager.addDelegate(type, itemViewDelegate);
-        itemViewDelegate.mSectionAdapter = this;
+        //itemViewDelegate.mSectionAdapter = this;
         return this;
     }
 
     public MultiItemTypeAdapter addFooterViewDelegate(SectionHFViewDelegate itemViewDelegate) {
         final int type = FOOTER_TYPE_OFFSET + mFooterViewDelegateManager.getItemViewDelegateCount();
         mFooterViewDelegateManager.addDelegate(type, itemViewDelegate);
-        itemViewDelegate.mSectionAdapter = this;
+        //itemViewDelegate.mSectionAdapter = this;
         return this;
     }
 

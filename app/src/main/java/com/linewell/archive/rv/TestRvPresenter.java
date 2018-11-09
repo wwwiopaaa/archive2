@@ -19,7 +19,7 @@ import java.util.Random;
  * </pre>
  */
 public class TestRvPresenter extends RvPresenter<TestRvContract.V, TestRvContract.M, List<People>>
-implements TestRvContract.P{
+        implements TestRvContract.P {
     public TestRvPresenter(@NonNull TestRvContract.M model) {
         super(model);
     }

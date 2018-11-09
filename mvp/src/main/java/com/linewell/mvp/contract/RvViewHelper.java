@@ -268,7 +268,7 @@ public class RvViewHelper {
                 @Override
                 public void onCancel() {
                     if (!mEasyRecyclerView.currentViewIsContentView()) {
-                        mEasyRecyclerView.showEmptyView();
+                        mEasyRecyclerView.hideAllView();
                     }
                     mEasyRecyclerView.setRefreshing(false);
                 }

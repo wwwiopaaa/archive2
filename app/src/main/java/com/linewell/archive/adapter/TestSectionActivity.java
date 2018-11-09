@@ -69,7 +69,7 @@ public class TestSectionActivity extends BaseActivity {
 //        });
 
         sectionAdapter = new SectionAdapter(this);
-        sectionAdapter.addHeaderViewDelegate(new SectionHFViewDelegate() {
+        sectionAdapter.addHeaderViewDelegate(new SectionHFViewDelegate(sectionAdapter) {
             @Override
             public void convert(final ViewHolder holder, final Section section) {
                 holder.setText(R.id.title, "header");
@@ -95,7 +95,7 @@ public class TestSectionActivity extends BaseActivity {
             }
 
         });
-        sectionAdapter.addFooterViewDelegate(new SectionHFViewDelegate() {
+        sectionAdapter.addFooterViewDelegate(new SectionHFViewDelegate(sectionAdapter) {
             @Override
             public void convert(final ViewHolder holder, Section section) {
                 holder.setText(R.id.title, "footer");
@@ -117,7 +117,7 @@ public class TestSectionActivity extends BaseActivity {
                 return LayoutInflater.from(context).inflate(R.layout.item_footer, parent, false);
             }
         });
-        sectionAdapter.addItemViewDelegate(new SectionItemViewDelegate() {
+        sectionAdapter.addItemViewDelegate(new SectionItemViewDelegate(sectionAdapter) {
             @Override
             public void convert(final ViewHolder holder, Section section, final int positionInSection) {
                 holder.setText(R.id.title, "item:" + positionInSection);
