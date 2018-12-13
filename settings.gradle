@@ -1,1 +1,1 @@
-include ':app', ':core', ':easyview', ':mvp', ':adapter'
+include ':app', ':core', ':easyview', ':mvp', ':adapter', ':okhttp3'

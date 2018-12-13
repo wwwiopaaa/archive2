@@ -2,6 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.linewell.archive">
 
+    <!-- 添加读写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 访问互联网权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- GPS定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 系统弹窗权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +40,15 @@
         <activity android:name=".rv.TestRvActionBarActivity" />
         <activity android:name=".fragment.TestFragmentActivity" />
         <activity android:name=".adapter.TestViewPagerAdapterActivity" />
+        <activity android:name=".net.activity.UploadFileActivity" />
+        <activity android:name=".net.activity.DownloadActivity"></activity>
+        <activity android:name=".net.activity.UploadImageActivity"></activity>
+        <activity android:name=".net.activity.DownloadBreakpointsActivity"></activity>
+
+        <service android:name=".net.base.networkstate.NetSpeedService" />
+
+        <activity android:name=".net.activity.HttpProxyActivity"></activity>
+        <activity android:name=".net.activity.NetMainActivity"></activity>
     </application>
 
 </manifest>
